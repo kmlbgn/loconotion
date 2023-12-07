@@ -159,7 +159,7 @@ class Parser:
                 queryless_url = queryless_url + f"?width={query_params['width']}"
             filename = hashlib.sha1(str.encode(queryless_url)).hexdigest()
         destination = self.dist_folder / filename
-
+        log.info(f"Cached file destination: {destination}")
         # check if there are any files matching the filename, ignoring extension
         matching_file = glob.glob(str(destination.with_suffix(".*")))
         if not matching_file:
